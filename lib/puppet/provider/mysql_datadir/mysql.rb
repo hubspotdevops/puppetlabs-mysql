@@ -18,6 +18,7 @@ Puppet::Type.type(:mysql_datadir).provide(:mysql, :parent => Puppet::Provider::M
     user                     = @resource.value(:user) || "mysql"
     basedir                  = @resource.value(:basedir) || "/usr"
     datadir                  = @resource.value(:datadir) || @resource[:name]
+    log_error                = @resource.value(:log_error) || "/var/tmp/mysqld_initialize.log"
 
     unless defaults_extra_file.nil?
       if File.exist?(defaults_extra_file)
@@ -39,7 +40,7 @@ Puppet::Type.type(:mysql_datadir).provide(:mysql, :parent => Puppet::Provider::M
     else
       if (mysqld_type == "mysql" or mysqld_type == "percona") and Puppet::Util::Package.versioncmp(mysqld_version, '5.7.6') >= 0
         debug("Initializing MySQL data directory >= 5.7.6 with 'mysqld #{defaults_extra_file} #{initialize} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}'")
-        mysqld([defaults_extra_file, initialize, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}", "--log_error=/var/tmp/mysqld_initialize.log"].compact)
+        mysqld([defaults_extra_file, initialize, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}", "--log_error=#{log_error}"].compact)
       else
         debug("Installing MySQL data directory with mysql_install_db #{defaults_extra_file} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}")
         mysql_install_db([defaults_extra_file, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}"].compact)
