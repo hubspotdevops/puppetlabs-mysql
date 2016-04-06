@@ -16,7 +16,6 @@ Puppet::Type.type(:mysql_user).provide(:mysql, :parent => Puppet::Provider::Mysq
         ## Default ...
         query = "SELECT MAX_USER_CONNECTIONS, MAX_CONNECTIONS, MAX_QUESTIONS, MAX_UPDATES, PASSWORD /*!50508 , PLUGIN */ FROM mysql.user WHERE CONCAT(user, '@', host) = '#{name}'"
       else
-        notice("mysqld_type: #{mysqld_type}, mysqld_version: #{mysqld_version}")
         if mysqld_type == "mysql" and Puppet::Util::Package.versioncmp(mysqld_version, '5.7.6') >= 0
           query = "SELECT MAX_USER_CONNECTIONS, MAX_CONNECTIONS, MAX_QUESTIONS, MAX_UPDATES, AUTHENTICATION_STRING, PLUGIN FROM mysql.user WHERE CONCAT(user, '@', host) = '#{name}'"
         else
@@ -109,7 +108,6 @@ Puppet::Type.type(:mysql_user).provide(:mysql, :parent => Puppet::Provider::Mysq
       # default ... if mysqld_version does not work
       mysql([defaults_file, '-e', "SET PASSWORD FOR #{merged_name} = '#{string}'"].compact)
     else
-      notice("mysqld_type: #{mysqld_type}, mysqld_version: #{mysqld_version}")
       # Version >= 5.7.6 (many password related changes)
       if mysqld_type == "mysql" and Puppet::Util::Package.versioncmp(mysqld_version, '5.7.6') >= 0
         if string.match(/^\*/)

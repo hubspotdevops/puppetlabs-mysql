@@ -34,15 +34,14 @@ Puppet::Type.type(:mysql_datadir).provide(:mysql, :parent => Puppet::Provider::M
     end
 
     if mysqld_version.nil?
-      notice("Installing MySQL data directory with mysql_install_db #{defaults_extra_file} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}")
+      debug("Installing MySQL data directory with mysql_install_db #{defaults_extra_file} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}")
       mysql_install_db([defaults_extra_file, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}"].compact)
     else
-      notice("mysqld_type: #{mysqld_type}, mysqld_version: #{mysqld_version}")
       if mysqld_type == "mysql" and Puppet::Util::Package.versioncmp(mysqld_version, '5.7.6') >= 0
-        notice("Initializing MySQL data directory >= 5.7.6 with 'mysqld #{defaults_extra_file} #{initialize} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}'")
+        debug("Initializing MySQL data directory >= 5.7.6 with 'mysqld #{defaults_extra_file} #{initialize} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}'")
         mysqld([defaults_extra_file, initialize, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}", "--log_error=/var/tmp/mysqld_initialize.log"].compact)
       else
-        notice("Installing MySQL data directory with mysql_install_db --basedir=#{basedir} #{defaults_extra_file} --datadir=#{datadir} --user=#{user}")
+        debug("Installing MySQL data directory with mysql_install_db #{defaults_extra_file} --basedir=#{basedir} --datadir=#{datadir} --user=#{user}")
         mysql_install_db([defaults_extra_file, "--basedir=#{basedir}", "--datadir=#{datadir}", "--user=#{user}"].compact)
       end
     end
