@@ -28,7 +28,7 @@ Puppet::Type.newtype(:mysql_datadir) do
   end
 
   newparam(:log_error) do
-    desc "The path to the mysqld error log file (used with the --log_error option)"
+    desc "The path to the mysqld error log file (used with the --log-error option)"
     newvalues(/^\//)
   end
 
