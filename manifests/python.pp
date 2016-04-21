@@ -1,4 +1,4 @@
-# Class: mysql::python
+# Class: hsmysql::python
 #
 # This class installs the python libs for mysql.
 #
@@ -12,10 +12,10 @@
 #
 # Sample Usage:
 #
-class mysql::python(
+class hsmysql::python(
   $package_ensure = 'present',
-  $package_name   = $mysql::python_package_name
-) inherits mysql {
+  $package_name   = $hsmysql::python_package_name
+) inherits hsmysql {
 
   package { 'python-mysqldb':
     ensure => $package_ensure,

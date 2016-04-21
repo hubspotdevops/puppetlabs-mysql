@@ -1,7 +1,7 @@
-class { 'mysql::server':
+class { 'hsmysql::server':
   config_hash => {'root_password' => 'password'}
 }
-class { 'mysql::backup':
+class { 'hsmysql::backup':
   backupuser     => 'myuser',
   backuppassword => 'mypassword',
   backupdir      => '/tmp/backups',

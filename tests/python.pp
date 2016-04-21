@@ -1,1 +1,1 @@
-class { 'mysql::python':}
+class { 'hsmysql::python':}

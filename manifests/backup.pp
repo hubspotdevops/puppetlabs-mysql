@@ -1,4 +1,4 @@
-# Class: mysql::backup
+# Class: hsmysql::backup
 #
 # This module handles ...
 #
@@ -13,17 +13,17 @@
 #    IDENTIFIED BY 'password';
 #
 # Requires:
-#   Class['mysql::config']
+#   Class['hsmysql::config']
 #
 # Sample Usage:
-#   class { 'mysql::backup':
+#   class { 'hsmysql::backup':
 #     backupuser     => 'myuser',
 #     backuppassword => 'mypassword',
 #     backupdir      => '/tmp/backups',
 #     backupcompress => true,
 #   }
 #
-class mysql::backup (
+class hsmysql::backup (
   $backupuser,
   $backuppassword,
   $backupdir,
@@ -35,7 +35,7 @@ class mysql::backup (
     ensure        => $ensure,
     password_hash => mysql_password($backuppassword),
     provider      => 'mysql',
-    require       => Class['mysql::config'],
+    require       => Class['hsmysql::config'],
   }
 
   database_grant { "${backupuser}@localhost":

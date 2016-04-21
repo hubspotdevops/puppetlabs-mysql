@@ -1,4 +1,4 @@
-# Class: mysql::ruby
+# Class: hsmysql::ruby
 #
 # installs the ruby bindings for mysql
 #
@@ -13,11 +13,11 @@
 #
 # Sample Usage:
 #
-class mysql::ruby (
+class hsmysql::ruby (
   $package_ensure   = 'present',
-  $package_name     = $mysql::ruby_package_name,
-  $package_provider = $mysql::ruby_package_provider
-) inherits mysql {
+  $package_name     = $hsmysql::ruby_package_name,
+  $package_provider = $hsmysql::ruby_package_provider
+) inherits hsmysql {
 
   package{ 'ruby_mysql':
     ensure   => $package_ensure,

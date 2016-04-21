@@ -1,4 +1,4 @@
-# Class: mysql::server
+# Class: hsmysql::server
 #
 # manages the installation of the mysql server.  manages the package, service,
 # my.cnf
@@ -6,7 +6,7 @@
 # Parameters:
 #  [*config_hash*]      - hash of config parameters that need to be set.
 #  [*enabled*]          - Defaults to true, boolean to set service ensure.
-#  [*manage_service*]   - Boolean dictating if mysql::server should manage the service
+#  [*manage_service*]   - Boolean dictating if hsmysql::server should manage the service
 #  [*package_ensure*]   - Ensure state for package. Can be specified as version.
 #  [*package_name*]     - The name of package
 #  [*service_name*]     - The name of service
@@ -19,19 +19,19 @@
 #
 # Sample Usage:
 #
-class mysql::server (
+class hsmysql::server (
   $config_hash      = {},
   $enabled          = true,
   $manage_service   = true,
-  $package_ensure   = $mysql::package_ensure,
-  $package_name     = $mysql::server_package_name,
-  $service_name     = $mysql::service_name,
-  $service_provider = $mysql::service_provider
-) inherits mysql {
+  $package_ensure   = $hsmysql::package_ensure,
+  $package_name     = $hsmysql::server_package_name,
+  $service_name     = $hsmysql::service_name,
+  $service_provider = $hsmysql::service_provider
+) inherits hsmysql {
 
-  Class['mysql::server'] -> Class['mysql::config']
+  Class['hsmysql::server'] -> Class['hsmysql::config']
 
-  $config_class = { 'mysql::config' => $config_hash }
+  $config_class = { 'hsmysql::config' => $config_hash }
 
   create_resources( 'class', $config_class )
 

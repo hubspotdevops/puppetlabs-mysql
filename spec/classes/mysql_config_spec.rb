@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'mysql::config' do
+describe 'hsmysql::config' do
 
   let :constant_parameter_defaults do
     {

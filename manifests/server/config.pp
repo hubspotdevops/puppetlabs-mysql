@@ -1,8 +1,8 @@
 # Creates a my.cnf like config file in the conf.d/ directory.
 #
 # IMPORTANT: this should be used AFTER the inclusion of
-#            mysql::server because it needs some variables
-#            out of the mysql::config class which will be
+#            hsmysql::server because it needs some variables
+#            out of the hsmysql::config class which will be
 #            included!
 #
 # == Parameters:
@@ -35,7 +35,7 @@
 #
 #   Easy one:
 #
-#   mysql::server::config { 'basic_config':
+#   hsmysql::server::config { 'basic_config':
 #     settings => "[mysqld]\nskip-external-locking\n"
 #   }
 #
@@ -48,7 +48,7 @@
 #
 #   More complex example:
 #
-#   mysql::server::config { 'basic_config':
+#   hsmysql::server::config { 'basic_config':
 #     settings => {
 #       'mysqld' => {
 #         'query_cache_limit'     => '5M',
@@ -81,11 +81,11 @@
 #   [client]
 #   port = 3300
 #
-define mysql::server::config (
+define hsmysql::server::config (
   $settings,
   $notify_service = true
 ) {
-  include mysql::config
+  include hsmysql::config
 
   if is_hash($settings) {
     $content = template('mysql/my.conf.cnf.erb')
@@ -97,7 +97,7 @@ define mysql::server::config (
     ensure  => file,
     content => $content,
     owner   => 'root',
-    group   => $mysql::config::root_group,
+    group   => $hsmysql::config::root_group,
     mode    => '0644',
     require => Package['mysql-server'],
   }

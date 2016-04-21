@@ -12,7 +12,7 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 #
-class mysql::server::mysqltuner {
+class hsmysql::server::mysqltuner {
   # mysql performance tester
   file { '/usr/bin/mysqltuner':
     ensure  => present,

@@ -24,7 +24,7 @@
 #
 # [*log_error*]             - Where to log errors
 #
-# [*manage_service*]        - Boolean dictating if mysql::server should manage the service
+# [*manage_service*]        - Boolean dictating if hsmysql::server should manage the service
 #
 # [*old_root_password*]     - Previous root user password,
 #
@@ -57,7 +57,7 @@
 #
 # [*server_package_name*]   - The name of the server package to install
 #
-# [*service_provider*]      - Sets the service provider to upstart on Ubuntu systems for mysql::server.
+# [*service_provider*]      - Sets the service provider to upstart on Ubuntu systems for hsmysql::server.
 #
 # [*service_name*]          - The name of the service to start
 #
@@ -78,39 +78,39 @@
 # Sample Usage:
 #
 class mysql(
-  $basedir               = $mysql::params::basedir,
-  $bind_address          = $mysql::params::bind_address,
-  $client_package_name   = $mysql::params::client_package_name,
-  $config_file           = $mysql::params::config_file,
-  $config_template       = $mysql::params::config_template,
-  $datadir               = $mysql::params::datadir,
-  $default_engine        = $mysql::params::default_engine,
-  $etc_root_password     = $mysql::params::etc_root_password,
-  $java_package_name     = $mysql::params::java_package_name,
-  $log_error             = $mysql::params::log_error,
-  $manage_service        = $mysql::params::manage_service,
-  $old_root_password     = $mysql::params::old_root_password,
-  $package_ensure        = $mysql::params::package_ensure,
+  $basedir               = $hsmysql::params::basedir,
+  $bind_address          = $hsmysql::params::bind_address,
+  $client_package_name   = $hsmysql::params::client_package_name,
+  $config_file           = $hsmysql::params::config_file,
+  $config_template       = $hsmysql::params::config_template,
+  $datadir               = $hsmysql::params::datadir,
+  $default_engine        = $hsmysql::params::default_engine,
+  $etc_root_password     = $hsmysql::params::etc_root_password,
+  $java_package_name     = $hsmysql::params::java_package_name,
+  $log_error             = $hsmysql::params::log_error,
+  $manage_service        = $hsmysql::params::manage_service,
+  $old_root_password     = $hsmysql::params::old_root_password,
+  $package_ensure        = $hsmysql::params::package_ensure,
   $package_name          = undef,
-  $php_package_name      = $mysql::params::php_package_name,
-  $pidfile               = $mysql::params::pidfile,
-  $port                  = $mysql::params::port,
-  $purge_conf_dir        = $mysql::params::purge_conf_dir,
-  $python_package_name   = $mysql::params::python_package_name,
-  $restart               = $mysql::params::restart,
-  $root_group            = $mysql::params::root_group,
-  $root_password         = $mysql::params::root_password,
-  $ruby_package_name     = $mysql::params::ruby_package_name,
-  $ruby_package_provider = $mysql::params::ruby_package_provider,
-  $server_package_name   = $mysql::params::server_package_name,
-  $service_name          = $mysql::params::service_name,
-  $service_provider      = $mysql::params::service_provider,
-  $socket                = $mysql::params::socket,
-  $ssl                   = $mysql::params::ssl,
-  $ssl_ca                = $mysql::params::ssl_ca,
-  $ssl_cert              = $mysql::params::ssl_cert,
-  $ssl_key               = $mysql::params::ssl_key
-) inherits mysql::params{
+  $php_package_name      = $hsmysql::params::php_package_name,
+  $pidfile               = $hsmysql::params::pidfile,
+  $port                  = $hsmysql::params::port,
+  $purge_conf_dir        = $hsmysql::params::purge_conf_dir,
+  $python_package_name   = $hsmysql::params::python_package_name,
+  $restart               = $hsmysql::params::restart,
+  $root_group            = $hsmysql::params::root_group,
+  $root_password         = $hsmysql::params::root_password,
+  $ruby_package_name     = $hsmysql::params::ruby_package_name,
+  $ruby_package_provider = $hsmysql::params::ruby_package_provider,
+  $server_package_name   = $hsmysql::params::server_package_name,
+  $service_name          = $hsmysql::params::service_name,
+  $service_provider      = $hsmysql::params::service_provider,
+  $socket                = $hsmysql::params::socket,
+  $ssl                   = $hsmysql::params::ssl,
+  $ssl_ca                = $hsmysql::params::ssl_ca,
+  $ssl_cert              = $hsmysql::params::ssl_cert,
+  $ssl_key               = $hsmysql::params::ssl_key
+) inherits hsmysql::params{
   if $package_name {
     warning('Using $package_name has been deprecated in favor of $client_package_name and will be removed.')
     $client_package_name_real = $package_name

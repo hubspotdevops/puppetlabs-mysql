@@ -50,51 +50,51 @@ This module is based on work by David Schmitt. The following contributor have co
 ### mysql
 Installs the mysql-client package.
 
-    class { 'mysql': }
+    class { 'hsmysql': }
 
-### mysql::java
+### hsmysql::java
 Installs mysql bindings for java.
 
-    class { 'mysql::java': }
-    
-### mysql::php
+    class { 'hsmysql::java': }
+
+### hsmysql::php
 Installs mysql bindings for php
 
-    class { 'mysql::php': }
+    class { 'hsmysql::php': }
 
-### mysql::python
+### hsmysql::python
 Installs mysql bindings for python.
 
-    class { 'mysql::python': }
+    class { 'hsmysql::python': }
 
-### mysql::ruby
+### hsmysql::ruby
 Installs mysql bindings for ruby.
 
-    class { 'mysql::ruby': }
+    class { 'hsmysql::ruby': }
 
-### mysql::server
+### hsmysql::server
 Installs mysql-server packages, configures my.cnf and starts mysqld service:
 
-    class { 'mysql::server':
+    class { 'hsmysql::server':
       config_hash => { 'root_password' => 'foo' }
     }
 
 Database login information stored in `/root/.my.cnf`.
 
-### mysql::db
+### hsmysql::db
 Creates a database with a user and assign some privileges.
 
-    mysql::db { 'mydb':
+    hsmysql::db { 'mydb':
       user     => 'myuser',
       password => 'mypass',
       host     => 'localhost',
       grant    => ['all'],
     }
 
-### mysql::backup
+### hsmysql::backup
 Installs a mysql backup script, cronjob, and priviledged backup user.
 
-    class { 'mysql::backup':
+    class { 'hsmysql::backup':
       backupuser     => 'myuser',
       backuppassword => 'mypassword',
       backupdir      => '/tmp/backups',
@@ -132,5 +132,5 @@ The custom resources can be used in any other manifests:
 A resource default can be specified to handle dependency:
 
     Database {
-      require => Class['mysql::server'],
+      require => Class['hsmysql::server'],
     }

@@ -1,10 +1,10 @@
-# Define: mysql::db
+# Define: hsmysql::db
 #
 # This module creates database instances, a user, and grants that user
 # privileges to the database.  It can also import SQL from a file in order to,
 # for example, initialize a database schema.
 #
-# Since it requires class mysql::server, we assume to run all commands as the
+# Since it requires class hsmysql::server, we assume to run all commands as the
 # root mysql user against the local mysql server.
 #
 # Parameters:
@@ -22,18 +22,18 @@
 #
 # Requires:
 #
-#   class mysql::server
+#   class hsmysql::server
 #
 # Sample Usage:
 #
-#  mysql::db { 'mydb':
+#  hsmysql::db { 'mydb':
 #    user     => 'my_user',
 #    password => 'password',
 #    host     => $::hostname,
 #    grant    => ['all']
 #  }
 #
-define mysql::db (
+define hsmysql::db (
   $user,
   $password,
   $charset     = 'utf8',
@@ -51,7 +51,7 @@ define mysql::db (
     ensure   => $ensure,
     charset  => $charset,
     provider => 'mysql',
-    require  => Class['mysql::server'],
+    require  => Class['hsmysql::server'],
     before   => Database_user["${user}@${host}"],
   }
 

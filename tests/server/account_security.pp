@@ -1,4 +1,4 @@
-class { 'mysql::server':
+class { 'hsmysql::server':
   config_hash => { 'root_password' => 'password', },
 }
-class { 'mysql::server::account_security': }
+class { 'hsmysql::server::account_security': }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'mysql::php' do
+describe 'hsmysql::php' do
 
   describe 'on a debian based os' do
     let :facts do

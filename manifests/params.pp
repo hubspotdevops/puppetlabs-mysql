@@ -1,4 +1,4 @@
-# Class: mysql::params
+# Class: hsmysql::params
 #
 #   The mysql configuration settings.
 #
@@ -10,7 +10,7 @@
 #
 # Sample Usage:
 #
-class mysql::params {
+class hsmysql::params {
 
   $bind_address        = '127.0.0.1'
   $config_template     = 'mysql/my.cnf.erb'

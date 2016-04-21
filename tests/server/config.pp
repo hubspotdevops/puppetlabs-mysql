@@ -1,4 +1,4 @@
-mysql::server::config { 'testfile':
+hsmysql::server::config { 'testfile':
   settings => {
     'mysqld' => {
       'bind-address' => '0.0.0.0',

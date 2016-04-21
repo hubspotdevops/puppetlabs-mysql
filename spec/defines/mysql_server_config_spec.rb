@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'mysql::server::config', :type => :define do
+describe 'hsmysql::server::config', :type => :define do
   filename = '/etc/mysql/conf.d/test_config.cnf'
 
   let :facts do

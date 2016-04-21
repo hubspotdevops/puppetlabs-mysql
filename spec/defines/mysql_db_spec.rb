@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'mysql::db', :type => :define do
+describe 'hsmysql::db', :type => :define do
   let(:title) { 'test_db' }
 
   let(:params) {

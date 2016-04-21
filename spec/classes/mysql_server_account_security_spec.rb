@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'mysql::server::account_security' do
+describe 'hsmysql::server::account_security' do
 
   let :facts do {
     :fqdn     => 'myhost.mydomain',

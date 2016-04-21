@@ -1,1 +1,1 @@
-include mysql::ruby
+include hsmysql::ruby

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'mysql::ruby' do
+describe 'hsmysql::ruby' do
 
   describe 'on a debian based os' do
     let :facts do

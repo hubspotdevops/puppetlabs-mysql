@@ -1,4 +1,4 @@
-# Class: mysql::java
+# Class: hsmysql::java
 #
 # This class installs the mysql-java-connector.
 #
@@ -11,10 +11,10 @@
 #
 # Sample Usage:
 #
-class mysql::java (
+class hsmysql::java (
   $package_ensure = 'present',
-  $package_name   = $mysql::java_package_name
-) inherits mysql {
+  $package_name   = $hsmysql::java_package_name
+) inherits hsmysql {
 
   package { 'mysql-connector-java':
     ensure => $package_ensure,

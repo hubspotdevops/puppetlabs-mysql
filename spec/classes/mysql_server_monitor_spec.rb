@@ -1,10 +1,10 @@
 require 'spec_helper'
-describe 'mysql::server::monitor' do
+describe 'hsmysql::server::monitor' do
   let :facts do
     { :osfamily => 'Debian' }
   end
   let :pre_condition do
-    "include 'mysql::server'"
+    "include 'hsmysql::server'"
   end
   let :params do
     {

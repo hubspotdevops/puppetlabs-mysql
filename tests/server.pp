@@ -1,3 +1,3 @@
-class { 'mysql::server':
+class { 'hsmysql::server':
   config_hash => { 'root_password' => 'password', },
 }

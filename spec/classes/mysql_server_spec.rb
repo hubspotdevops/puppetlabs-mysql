@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'mysql::server' do
+describe 'hsmysql::server' do
 
   let :constant_parameter_defaults do
     {:config_hash    => {},
