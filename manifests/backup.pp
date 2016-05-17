@@ -58,7 +58,7 @@ class hsmysql::backup (
     mode    => '0700',
     owner   => 'root',
     group   => 'root',
-    content => template('mysql/mysqlbackup.sh.erb'),
+    content => template('hsmysql/mysqlbackup.sh.erb'),
   }
 
   file { 'mysqlbackupdir':

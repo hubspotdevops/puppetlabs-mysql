@@ -88,7 +88,7 @@ define hsmysql::server::config (
   include hsmysql::config
 
   if is_hash($settings) {
-    $content = template('mysql/my.conf.cnf.erb')
+    $content = template('hsmysql/my.conf.cnf.erb')
   } else {
     $content = $settings
   }

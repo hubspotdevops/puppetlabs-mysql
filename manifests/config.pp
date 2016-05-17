@@ -107,13 +107,13 @@ class hsmysql::config(
     }
 
     file { '/root/.my.cnf':
-      content => template('mysql/my.cnf.pass.erb'),
+      content => template('hsmysql/my.cnf.pass.erb'),
       require => Exec['set_mysql_rootpw'],
     }
 
     if $etc_root_password {
       file{ '/etc/my.cnf':
-        content => template('mysql/my.cnf.pass.erb'),
+        content => template('hsmysql/my.cnf.pass.erb'),
         require => Exec['set_mysql_rootpw'],
       }
     }
@@ -134,7 +134,7 @@ class hsmysql::config(
     purge   => $purge_conf_dir,
   }
   file { $config_file:
-    content => template('mysql/my.cnf.erb'),
+    content => template('hsmysql/my.cnf.erb'),
     mode    => '0644',
   }
 

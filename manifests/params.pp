@@ -13,7 +13,7 @@
 class hsmysql::params {
 
   $bind_address        = '127.0.0.1'
-  $config_template     = 'mysql/my.cnf.erb'
+  $config_template     = 'hsmysql/my.cnf.erb'
   $default_engine      = 'UNSET'
   $etc_root_password   = false
   $manage_service      = true
