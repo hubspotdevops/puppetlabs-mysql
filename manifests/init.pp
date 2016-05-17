@@ -77,7 +77,7 @@
 #
 # Sample Usage:
 #
-class mysql(
+class hsmysql(
   $basedir               = $hsmysql::params::basedir,
   $bind_address          = $hsmysql::params::bind_address,
   $client_package_name   = $hsmysql::params::client_package_name,

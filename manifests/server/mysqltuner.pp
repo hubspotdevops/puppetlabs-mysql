@@ -17,6 +17,6 @@ class hsmysql::server::mysqltuner {
   file { '/usr/bin/mysqltuner':
     ensure  => present,
     mode    => '0550',
-    source  => 'puppet:///modules/mysql/mysqltuner.pl',
+    source  => 'puppet:///modules/hsmysql/mysqltuner.pl',
   }
 }
